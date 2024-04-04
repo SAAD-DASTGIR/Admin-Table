@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
-const user = createSlice({
+const userSlice = createSlice({
     name:'users',
     initialState:[],
     reducers:{
@@ -8,4 +8,4 @@ const user = createSlice({
         DeleteUsers(state,action){},
     }
 })
-export {user}
+export default userSlice.reducer
