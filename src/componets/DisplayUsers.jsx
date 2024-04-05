@@ -1,18 +1,30 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled  from "styled-components";
-const DisplayUsers = ()=>{
-    const data =useSelector((state)=>{
-        console.log(state.users);
+// import  UseDispatch  from "react-redux";
+import { removeUsers } from "../store/slices/userSlice";
+    const DisplayUsers = ()=>{
+    const data = useSelector((state) => {
+    return state.user;
     })
-    // console.log(data);
+    const dispatch = useDispatch()
+    const deleteUser=(id)=>{
+        dispatch(removeUsers(id))
+    }
+
+    console.log(data);
     return(
         <Wrapper>
             {
-                data && data.map((user,id) => {
-                    return<li key={id}>
-                        {user}
+               data && data.map((user, id) => {
+                    return <li key={id}>
+                      {user}
+                      <button 
+                      onClick={()=>deleteUser(id)}
+                      >
+                        remove
+                      </button>
                     </li>
-                })
+                  })
             }
         </Wrapper>
     )
